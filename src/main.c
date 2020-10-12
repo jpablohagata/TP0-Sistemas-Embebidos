@@ -1,6 +1,9 @@
-
 #include <stdio.h>
+#include <stdlib.h>
 #include "image.h"
+#include "shape.h"
+#include "rectangle.h"
+#include "line.h"
 
 
 #define MAX_IMG_NAME	20
@@ -13,29 +16,33 @@
 
 int main(void){
 	
-	image_t img;
-	int img_count=0;
 	char img_name[MAX_IMG_NAME];
+	image_t * img = (image_t *)malloc(sizeof(image_t));
+	if (!img) return EXIT_FAILURE;
+//	rectangle_t * rectangle = (rectangle_t *)malloc(sizeof(rectangle_t));
+//	if (!rectangle) return EXIT_FAILURE;
+	line_t * line = (line_t *)malloc(sizeof(line_t));
+	if (!line) return EXIT_FAILURE;
 
-	for(int l=10; l<180; l=l+2){
+	image_ctor(img,N_ROWS,N_COLS);
 
-		// Construyo el objeto "imagen"
-		image_ctor(&img,N_ROWS,N_COLS); 
+//	rectangle_ctor(rectangle, 1, 1, 10, 15);
+//	rectangle_rotate(rectangle, 90);
+//	shape_move(rectangle->super, 5, 5);
+//	rectangle_plot(rectangle,img);
 
-		// Lo modifico como yo quiera
-		for(int i=0; i<l; i++){
-			image_write(&img,i,i,HIGH); 
-		}
-		
-		// Lo guardo en un archivo
-		sprintf(img_name,"./images/img%.3d.pbm",img_count); 
-		image_to_file(&img,img_name); 
-		
-		// Libero memoria
-		image_dtor(&img); 
+	line_ctor(line, 1, 1, 10, 20);
+	line_plot(line, img);
+	
+	sprintf(img_name,"./images/img%.3d.pbm",0);
+	image_to_file(img,img_name);
+	image_dtor(img);
 
-		++img_count;
-	}
+//	rectangle_dtor(rectangle);
+//	free(rectangle);
+	line_dtor(line);
+	free(line);
+	free(img);
 
-	return 0;
+	return EXIT_SUCCESS;
 }
