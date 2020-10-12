@@ -1,14 +1,14 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H 
+#ifndef LINE_H
+#define LINE_H 
 
 #include "shape.h"
 #include <stdint.h>
 
 /* Estructura principal que representa la clase "línea" */
 typedef struct {
-	shape_t super;			// Clase de la cual se hereda
-	coordinate_t start;		// Coordenada de origen
-	coordinate_t end;		// Coordenada de final
+	shape_t * super;			// Clase de la cual se hereda
+	coordinate_t * start;		// Coordenada de origen
+	coordinate_t * end;		// Coordenada de final
 } line_t;
 
 
@@ -17,6 +17,13 @@ typedef struct {
 *		@return: Devuelve verdadero sii encontró memoria para guardar el objeto.
 **/
 bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
+
+
+/** 	@brief: Destructor del objeto "linea"
+*		@params: Recibe el puntero al objeto.
+*		@return: void
+**/
+void line_dtor(line_t *me);
 
 
 /** 	@brief: Rotar al segmento dejando fijo el punto de partida.
@@ -38,5 +45,12 @@ bool line_scale(line_t *me, float factor);
 *		@return: Devuelve la longitud del segmento.
 **/
 float line_get_lenght(line_t *me);
+
+
+/** 	@brief: Guarda la linea en una imagen
+*		@params: Recibe el puntero al objeto y el puntero a la imagen donde se guarda.
+*		@return: verdadero si la operación se realizó exitosamente
+**/
+bool line_plot(line_t *me, image_t *image);
 
 #endif

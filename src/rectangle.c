@@ -21,7 +21,8 @@ bool rectangle_ctor(rectangle_t *me, uint32_t position_x, uint32_t position_y,
 	coord_arr->n_array = width*height;
 	coord_arr->coordinates = coords;
 
-	for (register uint32_t i=0, coord_id = 0; i<width; i++) {
+	uint32_t coord_id = 0;
+	for (register uint32_t i=0; i<width; i++) {
 		for (register uint32_t j=0; j<height; j++) {
 
 			coords[coord_id] = (coordinate_t *)malloc(sizeof(coordinate_t));

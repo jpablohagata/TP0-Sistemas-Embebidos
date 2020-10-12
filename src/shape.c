@@ -40,7 +40,7 @@ bool shape_move(shape_t *me, uint32_t dx, uint32_t dy){
 }
 
 bool shape_rotate(shape_t *me, float angle){
-	// Completar
+	// TODO
 	return true;
 }
 
