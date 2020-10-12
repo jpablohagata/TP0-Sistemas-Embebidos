@@ -13,14 +13,14 @@ typedef struct {
 
 /* Vector de coordenadas almacenado dinámicamente */
 typedef	struct {
-	coordinate_t *coordinates; 	// Array dinámico de coordenadas
+	coordinate_t **coordinates; 	// Array dinámico de coordenadas
 	uint32_t n_array; 			// Largo del vector
 } coordinates_array_t;
 
 /* Estructura principal que representa a la clase "figura" */
 typedef	struct {
-	coordinates_array_t array; 	// Vector de coordenadas
-	coordinate_t position; 		// Posición de la figura
+	coordinates_array_t * array; 	// Vector de coordenadas
+	coordinate_t * position; 		// Posición de la figura
 } shape_t;
 
 
@@ -44,6 +44,12 @@ void shape_dtor(shape_t *me);
 *		@return: verdadero si la operación se realizó exitosamente
 **/
 bool shape_move(shape_t *me, uint32_t dx, uint32_t dy);
+
+/** 	@brief: Rota la "figura"
+*		@params: Recibe el puntero al objeto y el angulo que se quiere rotar la figura.
+*		@return: verdadero si la operación se realizó exitosamente
+**/
+bool shape_rotate(shape_t *me, float angle);
 
 
 /** 	@brief: Calcula la distancia a la posición de otra figura
