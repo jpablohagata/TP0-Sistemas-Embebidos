@@ -1,7 +1,6 @@
 #include "shape.h"
 #include "rectangle.h"
 #include <stdint.h>
-#include <math.h>
 #include <stdlib.h>
 
 bool rectangle_ctor(rectangle_t *me, uint32_t position_x, uint32_t position_y, 

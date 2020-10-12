@@ -1,6 +1,7 @@
 #include "shape.h"
 #include "image.h"
 #include <stdlib.h>
+#include <math.h>
 
 #define PI 3.14159265
 
@@ -29,15 +30,28 @@ void shape_dtor(shape_t *me){
 }
 
 bool shape_move(shape_t *me, uint32_t dx, uint32_t dy){
-	// Completar
+
+	for (register uint32_t i=0; i<me->array->n_array; i++){
+		me->array->coordinates[i]->x += dx;
+		me->array->coordinates[i]->y += dy;
+	}
+
+	return true;
 }
 
 bool shape_rotate(shape_t *me, float angle){
 	// Completar
+	return true;
 }
 
-float shape_distance_from(shape_t *me, shape_t *shape){
-	// Completar
+float shape_distance_from(shape_t *s1, shape_t *s2){
+
+	uint32_t x, y;
+	x = s1->position->x-s2->position->x;
+	y = s1->position->y-s2->position->y;
+
+	return sqrt(x*x+y*y);
+
 }
 
 bool shape_plot(shape_t *me, image_t *image){
