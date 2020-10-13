@@ -50,6 +50,10 @@ bool rectangle_rotate(rectangle_t *me, float angle){
 	return shape_rotate(me->super, angle);
 }
 
+bool rectangle_move(rectangle_t * me, uint32_t dx, uint32_t dy){
+	return shape_move(me->super,dx,dy);
+}
+
 uint32_t rectangle_get_area(rectangle_t *me){
 	return me->super->array->n_array;
 }

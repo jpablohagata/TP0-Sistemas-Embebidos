@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -71,4 +70,12 @@ void image_to_file(image_t *me, const char *filename){
 
 	fclose(filename_ptr);
 
+}
+
+uint32_t image_get_width(const image_t * me){
+	return me->n_cols;
+}
+
+uint32_t image_get_height(const image_t * me){
+	return me->n_rows;
 }

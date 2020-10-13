@@ -52,4 +52,8 @@ img_data_t image_read(image_t *me, uint32_t i, uint32_t j);
 void image_to_file(image_t *me, const char *filename);
 
 
+uint32_t image_get_width(const image_t * me);
+
+uint32_t image_get_height(const image_t * me);
+
 #endif
