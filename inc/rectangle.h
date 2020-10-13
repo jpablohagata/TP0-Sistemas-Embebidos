@@ -39,6 +39,11 @@ bool rectangle_rotate(rectangle_t *me, float angle);
 *		@params: recibe el puntero al objeto.
 *		@return: Devuelve el valor del área.
 **/
+
+bool rectangle_move(rectangle_t * me, uint32_t dx, uint32_t dy);
+
+
+
 uint32_t rectangle_get_area(rectangle_t *me);
 
 
