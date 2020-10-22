@@ -34,7 +34,7 @@ static bool generate_video(uint32_t width,uint32_t height,uint32_t total_frames)
 		return false;
 	}
 
-	for(register size_t i = 0; i < total_frames; i++){
+	for(register uint32_t i = 0; i < total_frames; i++){
 		// Creamos la imagen (el canvas sobre el que se va a dibujar el objeto)
 		if(!image_ctor(image_ptr,height,width)){
 			free(image_ptr);
@@ -63,7 +63,7 @@ static bool generate_video(uint32_t width,uint32_t height,uint32_t total_frames)
 		}
 
 		//Creamos el archivo en memoria
-		sprintf(img_name,"./video/img%.3d.pbm",i);
+		sprintf(img_name,"./images/img%.3d.pbm",i);
 		image_to_file(image_ptr,img_name);
 		image_dtor(image_ptr);
 		rectangle_dtor(rectangle_ptr);
