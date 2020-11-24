@@ -47,10 +47,4 @@ bool line_scale(line_t *me, float factor);
 float line_get_lenght(line_t *me);
 
 
-/** 	@brief: Guarda la linea en una imagen
-*		@params: Recibe el puntero al objeto y el puntero a la imagen donde se guarda.
-*		@return: verdadero si la operación se realizó exitosamente
-**/
-bool line_plot(line_t *me, image_t *image);
-
 #endif

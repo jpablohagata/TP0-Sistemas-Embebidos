@@ -40,17 +40,7 @@ bool rectangle_rotate(rectangle_t *me, float angle);
 *		@return: Devuelve el valor del área.
 **/
 
-bool rectangle_move(rectangle_t * me, uint32_t dx, uint32_t dy);
-
-
 
 uint32_t rectangle_get_area(rectangle_t *me);
-
-
-/** 	@brief: Guarda el rectamgulo en una imagen
-*		@params: Recibe el puntero al objeto y el puntero a la imagen donde se guarda.
-*		@return: verdadero si la operación se realizó exitosamente
-**/
-bool rectangle_plot(rectangle_t *me, image_t *image);
 
 #endif

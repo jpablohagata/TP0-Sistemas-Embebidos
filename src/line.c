@@ -77,7 +77,3 @@ float line_get_lenght(line_t *me){
 	y2 = me->end->y;
 	return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));;
 }
-
-bool line_plot(line_t *me, image_t *image){
-	return shape_plot(me->super, image);
-}

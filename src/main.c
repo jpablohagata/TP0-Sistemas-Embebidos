@@ -51,10 +51,10 @@ static bool generate_video(uint32_t width,uint32_t height,uint32_t total_frames)
 		}
 
 		rectangle_rotate(rectangle_ptr,i);
-		rectangle_move(rectangle_ptr,4*i,4*i);
+		shape_move(rectangle_ptr->super,4*i,4*i);
 
 		// Agregamos el objeto a la imagen
-		if((rectangle_plot(rectangle_ptr,image_ptr)) == false){
+		if((shape_plot(rectangle_ptr->super,image_ptr)) == false){
 			rectangle_dtor(rectangle_ptr);
 			image_dtor(image_ptr);
 			free(image_ptr);
@@ -79,30 +79,33 @@ static bool generate_video(uint32_t width,uint32_t height,uint32_t total_frames)
 int main(void){
 	
 	char img_name[MAX_IMG_NAME];
+
+	// Crear TDA image_t
 	image_t * img = (image_t *)malloc(sizeof(image_t));
 	if (!img) return EXIT_FAILURE;
-//	rectangle_t * rectangle = (rectangle_t *)malloc(sizeof(rectangle_t));
-//	if (!rectangle) return EXIT_FAILURE;
+
+	// Crear TDA line_t
 	line_t * line = (line_t *)malloc(sizeof(line_t));
 	if (!line) return EXIT_FAILURE;
 
+	// Creator de TDA
 	image_ctor(img,N_ROWS,N_COLS);
 
-//	rectangle_ctor(rectangle, 1, 1, 10, 15);
-//	rectangle_rotate(rectangle, 90);
-//	shape_move(rectangle->super, 5, 5);
-//	rectangle_plot(rectangle,img);
-
+	// Creator del TDA
 	line_ctor(line, 1, 1, 10, 20);
-	line_plot(line, img);
+
+	// Dibujamos la linea en la imagen
+	shape_plot(line->super, img);
 	
+	// Guardamos la imagen en un archivo
 	sprintf(img_name,"./images/img%.3d.pbm",0);
 	image_to_file(img,img_name);
-	image_dtor(img);
 
-//	rectangle_dtor(rectangle);
-//	free(rectangle);
+	// Destruimos los TDA
+	image_dtor(img);
 	line_dtor(line);
+
+	// Liberamos la memoria
 	free(line);
 	free(img);
 
